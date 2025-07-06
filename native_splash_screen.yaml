@@ -1,0 +1,19 @@
+flutter_native_splash:
+  android: true
+  ios: true
+  # web: false
+
+  color: "FFFFFF"
+  # background_image: ""
+  image: "images/penergetic_inc_logo.png"
+  # branding: "logo on the bottom of the screen"
+
+  # color_dark: "FF303030"
+  # background_image_dark: ""
+  # image_dark: "images/penergetic_inc_logo.png"
+  # branding_dark: "logo on the bottom of the screen"
+
+  android_12:
+    color: "FFFFFF"
+    image: "images/penergetic_inc_logo.png"
+    # branding: "logo on the bottom of the screen"

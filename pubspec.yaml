@@ -1,0 +1,90 @@
+name: farm_management
+description: "Farm Management App"
+publish_to: "none"
+version: 0.1.0
+
+environment:
+  sdk: ^3.5.4
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^1.0.2
+
+  #sqflite
+  sqflite: ^2.3.0
+  #GetX
+  get: ^4.6.5
+  get_storage: ^2.1.1
+  #native splash screen
+  flutter_native_splash: ^2.4.2
+  #Packages
+  http: ^1.2.2
+  intl: ^0.20.1
+  path: ^1.8.0
+  dropdown_button2: ^2.3.9
+  flutter_svg: ^2.0.7
+  file_picker: ^10.2.0
+  # image_gallery_saver: ^2.0.3
+  # saver_gallery: ^4.0.0
+  image_gallery_saver_plus: ^4.0.1
+  dio: ^5.3.3
+  permission_handler: ^12.0.1
+  path_provider: ^2.1.1
+  signature: ^5.4.0
+  connectivity_plus: ^6.1.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
+    - images/penergetic_inc_logo.png
+    - images/dp.jpeg
+    - images/icons/appbar_button.svg
+    - images/icons/alert_circle.svg
+    - images/icons/clipboard.svg
+    - images/icons/cloud_sync.svg
+    - images/icons/log_out.svg
+    - images/icons/facebook.svg
+    - images/icons/file_text.svg
+    - images/icons/linkedin.svg
+    - images/icons/server.svg
+    - images/icons/settings.svg
+    - images/icons/twitter.svg
+    - images/icons/user.svg
+    - images/icons/add_task.svg
+    - images/icons/youtube.svg
+    - images/icons/trash.svg
+    - images/icons/edit.svg
+    - images/icons/eye.svg
+
+  # To add custom fonts to your application, add a fonts section here,
+  # in this "flutter" section. Each entry in this list should have a
+  # "family" key with the font family name, and a "fonts" key with a
+  # list giving the asset and other descriptors for the font.
+  fonts:
+    - family: Oswald
+      fonts:
+        - asset: fonts/Oswald-ExtraLight.ttf
+          weight: 200
+        - asset: fonts/Oswald-Light.ttf
+          weight: 300
+        - asset: fonts/Oswald-Regular.ttf
+          weight: 400
+        - asset: fonts/Oswald-Medium.ttf
+          weight: 500
+        - asset: fonts/Oswald-DemiBold.ttf
+          weight: 600
+        - asset: fonts/Oswald-Bold.ttf
+          weight: 700
+        - asset: fonts/Oswald-Heavy.ttf
+          weight: 800
