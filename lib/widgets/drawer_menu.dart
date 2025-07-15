@@ -305,103 +305,86 @@ class DrawerMenu extends StatelessWidget {
                         bool haveInternet = await checkNetworkConnectivity();
 
                         if (haveInternet) {
-                          //------------ Uncomment after API Integration ------------
-
-                          // String? accessToken =
-                          //     stateController.getAccessToken();
-                          // if (accessToken != "" && accessToken != null) {
-
-                          //-------------------------------------------------
-
-                          //Sync Data using APIs
-                          Get.dialog(
-                            barrierDismissible: false,
-                            Stack(
-                              children: [
-                                //
-                                Opacity(
-                                  opacity: 0.4,
-                                  child: ModalBarrier(
-                                    dismissible: false,
-                                    color: CFGColor.black,
-                                  ),
-                                ),
-
-                                Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      "Sync in progress...",
-                                      style: TextStyle(
-                                        decoration: TextDecoration.none,
-                                        fontWeight: CFGFont.regularFontWeight,
-                                        fontSize: CFGFont.subTitleFontSize,
-                                        color: CFGFont.whiteFontColor,
-                                      ),
+                          String? accessToken =
+                              stateController.getAccessToken();
+                          if (accessToken != "" && accessToken != null) {
+                            //Sync Data using APIs
+                            Get.dialog(
+                              barrierDismissible: false,
+                              Stack(
+                                children: [
+                                  //
+                                  Opacity(
+                                    opacity: 0.4,
+                                    child: ModalBarrier(
+                                      dismissible: false,
+                                      color: CFGColor.black,
                                     ),
-                                    //
-                                    const SB(height: 24),
+                                  ),
 
-                                    Center(
-                                      child: SB(
-                                        height: 40,
-                                        width: 40,
-                                        child: CircularProgressIndicator(
-                                          color: CFGTheme
-                                              .circularProgressIndicator,
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        "Sync in progress...",
+                                        style: TextStyle(
+                                          decoration: TextDecoration.none,
+                                          fontWeight: CFGFont.regularFontWeight,
+                                          fontSize: CFGFont.subTitleFontSize,
+                                          color: CFGFont.whiteFontColor,
                                         ),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          );
+                                      //
+                                      const SB(height: 24),
 
-                          //------------ Remove after API Integration ------------
-                          Future.delayed(const Duration(milliseconds: 2000),
-                              () {
-                            // Dismiss the dialog and show completion Snackbar
-                            Get.back();
-                          });
-                          //------------------------------------------------------
+                                      Center(
+                                        child: SB(
+                                          height: 40,
+                                          width: 40,
+                                          child: CircularProgressIndicator(
+                                            color: CFGTheme
+                                                .circularProgressIndicator,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            );
 
-                          //------------ Uncomment after API Integration ------------
+                            try {
+                              // Perform sync operations
+                              bool sync =
+                                  await ApiDataService().syncPushApiData();
 
-                          //   try {
-                          //     // Perform sync operations
-                          //     bool sync =
-                          //         await ApiDataService().syncPushApiData();
+                              // Dismiss the dialog and show completion Snackbar
+                              Get.back();
 
-                          //     // Dismiss the dialog and show completion Snackbar
-                          //     Get.back();
+                              Future.delayed(const Duration(milliseconds: 300),
+                                  () {
+                                sync
+                                    ? snackBar(
+                                        msg: "Sync Successful.", isPass: true)
+                                    : snackBar(
+                                        msg: "Sync Failed. Try Again...",
+                                        isPass: false);
+                              });
+                            } catch (e, stackTrace) {
+                              debugPrint(
+                                  "Error occurred while syncing data: $e");
+                              debugPrint("StackTrace: $stackTrace");
+                              // Handle sync error
+                              Get.back();
 
-                          //     Future.delayed(const Duration(milliseconds: 300),
-                          //         () {
-                          //       sync
-                          //           ? snackBar(
-                          //               msg: "Sync Successful.", isPass: true)
-                          //           : snackBar(
-                          //               msg: "Sync Failed. Try Again...",
-                          //               isPass: false);
-                          //     });
-                          //   } catch (e, stackTrace) {
-                          //     debugPrint(
-                          //         "Error occurred while syncing data: $e");
-                          //     debugPrint("StackTrace: $stackTrace");
-                          //     // Handle sync error
-                          //     Get.back();
-
-                          //     snackBar(
-                          //         msg: "Sync Failed. Try Again...",
-                          //         isPass: false);
-                          //   }
-                          // } else {
-                          //   //Redirecting to Super Admin Login
-                          //   Get.to(() => SuperAdminSignIn(isSyncOut: true));
-                          // }
-
-                          //-------------------------------------------------
+                              snackBar(
+                                  msg: "Sync Failed. Try Again...",
+                                  isPass: false);
+                            }
+                          } else {
+                            //Redirecting to Super Admin Login
+                            Get.to(() => SuperAdminSignIn(isSyncOut: true));
+                          }
                         } else {
                           //Show "No Internet"
                           snackBar(

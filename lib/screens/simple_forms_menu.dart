@@ -1,5 +1,6 @@
 // ignore_for_file: must_be_immutable
 
+import 'package:farm_management/lists/dropdown_list.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:farm_management/bottom_sheets/simple_forms_bottom_sheet.dart';
@@ -38,11 +39,9 @@ class _SimpleFormsMenuState extends State<SimpleFormsMenu> {
 
   @override
   Widget build(BuildContext context) {
-    //-------- Uncomment After Implementing API --------
     //Generating Dropdown Lists
-    // DropdownList().generateDropdownLists();
+    DropdownList().generateDropdownLists();
 
-    //--------------------------------------------------
     Size mediaQuerySize = MediaQuery.of(context).size;
 
     //PopScope "false" to disable back button

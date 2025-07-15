@@ -31,63 +31,16 @@ class StateController extends GetxController {
   // List<OrgClientFarmModel> rawFarmList = [];
   // List<change list model> rawCropList = [];
 
-  //-------------------- Remove after API Integration --------------------
-
-  List<Map<int, String>> clientList = [
-    {0: 'Test Client 1'},
-  ];
-  List<Map<int, String>> farmList = [
-    {0: 'Test Farm 1'},
-    {1: 'Test Farm 2'},
-    {2: 'Test Farm 3'},
-    {3: 'Test Farm 4'},
-  ];
-  List<Map<int, String>> cropList = [
-    {19: 'Test Crop 1'},
-    {20: 'Test Crop 2'},
-    {21: 'Test Crop 3'},
-  ];
-  List<Map<int, String>> equipmentNameList = [
-    {0: 'Test Equipment 1'},
-    {1: 'Test Equipment 2'},
-    {2: 'Test Equipment 3'},
-    {3: 'Test Equipment 4'},
-    {4: 'Test Equipment 5'},
-  ];
-  List<Map<int, String>> assetTypeList = [
-    {0: 'Test Asset Type 1'},
-    {1: 'Test Asset Type 2'},
-    {2: 'Test Asset Type 3'},
-    {3: 'Test Asset Type 4'},
-  ];
-  List<Map<int, String>> equipmentManufacturerNameList = [
-    {0: 'Test Equipment Manufacturer 1'},
-    {1: 'Test Equipment Manufacturer 2'},
-    {2: 'Test Equipment Manufacturer 3'},
-    {3: 'Test Equipment Manufacturer 4'},
-    {4: 'Test Equipment Manufacturer 5'},
-  ];
-  List<Map<int, String>> workerList = [
-    {6: 'Bron Pressler'},
-    {7: 'Rayan Niel'},
-  ];
-
-  //----------------------------------------------------------------------
-
   //Dropdown Lists
 
-  //-------------------- Uncomment after API Integration --------------------
-
-  // List<Map<int, String>> clientList = [];
-  // List<Map<int, String>> farmList = [];
-  // List<Map<int, String>> cropList = [];
-  // // List<Map<int, String>> varietyList = [];  //Moved inside individual forms
-  // List<Map<int, String>> equipmentNameList = [];
-  // List<Map<int, String>> assetTypeList = [];
-  // List<Map<int, String>> equipmentManufacturerNameList = [];
-  // List<Map<int, String>> workerList = [];
-
-  //----------------------------------------------------------------------
+  List<Map<int, String>> clientList = [];
+  List<Map<int, String>> farmList = [];
+  List<Map<int, String>> cropList = [];
+  // List<Map<int, String>> varietyList = [];  //Moved inside individual forms
+  List<Map<int, String>> equipmentNameList = [];
+  List<Map<int, String>> assetTypeList = [];
+  List<Map<int, String>> equipmentManufacturerNameList = [];
+  List<Map<int, String>> workerList = [];
 
   List<Map<int, String>> typeList = [
     {0: 'Prepack'},

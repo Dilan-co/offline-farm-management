@@ -69,19 +69,9 @@ class _SuperAdminSignInState extends State<SuperAdminSignIn> {
 
   //Authenticate SignIn
   Future<bool> signInAuthentication() async {
-    //------------ Uncomment after API Integration ------------
-    // // Use SignIn Authentication
-    // bool isSuccess = await SuperAdminApiService()
-    //     .superAdminLogin(username: username ?? "", pin: pin ?? "");
-    //------------------------------------------------------
-
-    //------------ Remove after API Integration ------------
-    late bool isSuccess;
-    await Future.delayed(const Duration(milliseconds: 1000), () {
-      //
-      isSuccess = true;
-    });
-    //------------------------------------------------------
+    // Use SignIn Authentication
+    bool isSuccess = await SuperAdminApiService()
+        .superAdminLogin(username: username ?? "", pin: pin ?? "");
 
     isSuccess
         ? snackBar(msg: "Supervisor Signin Successful.", isPass: true)
@@ -183,23 +173,13 @@ class _SuperAdminSignInState extends State<SuperAdminSignIn> {
   Future<bool> performSyncOperation() async {
     bool sync = false;
     try {
-      //------------ Uncomment after API Integration ------------
-      // if (widget.isSyncOut) {
-      //   // Add Sync API Data to Backend
-      //   sync = await ApiDataService().syncPushApiData();
-      // } else {
-      //   // Add Sync API Data from Backend
-      //   sync = await ApiDataService().superAdminLoginFetchApiData();
-      // }
-      //------------------------------------------------------
-
-      //------------ Remove after API Integration ------------
-      await Future.delayed(const Duration(milliseconds: 2000), () {
-        //
-        sync = true;
-        username = "admin";
-      });
-      //------------------------------------------------------
+      if (widget.isSyncOut) {
+        // Add Sync API Data to Backend
+        sync = await ApiDataService().syncPushApiData();
+      } else {
+        // Add Sync API Data from Backend
+        sync = await ApiDataService().superAdminLoginFetchApiData();
+      }
 
       // Get User record from DB
       UserModel? user = await User().fetchByUsername(userName: username!);

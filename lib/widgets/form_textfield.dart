@@ -130,6 +130,7 @@ class _FormTextFieldState extends State<FormTextField>
                       FilteringTextInputFormatter.digitsOnly,
                     ]
                   : null,
+              textCapitalization: TextCapitalization.sentences,
               keyboardType: widget.isIntOnly == true
                   ? const TextInputType.numberWithOptions(decimal: true)
                   : null,

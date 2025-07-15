@@ -194,6 +194,10 @@ class _TaskMainTileViewState extends State<TaskMainTileView> {
                                     child: SimpleFormsTileViewCard(
                                       dataObject: recordList[index],
                                       onDelete: onDelete,
+                                      deleteButtonHidden:
+                                          recordList[index].isSynced == 0
+                                              ? false
+                                              : true,
                                       viewRouter: NavRoute.taskView,
                                       updateRouter: NavRoute.taskUpdate,
                                       lastModifiedDateHidden: true,

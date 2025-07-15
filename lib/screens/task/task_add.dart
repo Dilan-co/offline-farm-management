@@ -1,12 +1,12 @@
 import 'package:farm_management/database/tables/task/task.dart';
 import 'package:farm_management/models/table_models/task/task_model.dart';
+import 'package:farm_management/screens/task/task_main_tile_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:farm_management/configs/color.dart';
 import 'package:farm_management/configs/theme.dart';
 import 'package:farm_management/configs/font.dart';
 import 'package:farm_management/controller/state_controller.dart';
-import 'package:farm_management/screens/simple_forms/production_harvesting_packaging_forms/plu_sticker_record/plu_sticker_record_main_tile_view.dart';
 import 'package:farm_management/services/request_permission.dart';
 import 'package:farm_management/services/get_value_for_key.dart';
 import 'package:farm_management/widgets/simple_forms_app_bar.dart';
@@ -180,7 +180,7 @@ class _TaskAddState extends State<TaskAdd> {
       FocusManager.instance.primaryFocus?.unfocus();
       if (widget.isUpdate) {
         Get.close(2);
-        Get.to(() => const PLUStickerRecordMainTileView());
+        Get.to(() => const TaskMainTileView());
       } else {
         Get.back(result: true);
       }

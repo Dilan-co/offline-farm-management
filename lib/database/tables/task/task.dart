@@ -20,11 +20,13 @@ class Task {
       "created_by" INTEGER DEFAULT NULL,
       "updated_at" TEXT DEFAULT NULL,
       "is_synced" INTEGER NOT NULL DEFAULT 1, -- Synced to backend. YES 1, NO 0
-      PRIMARY KEY("task_id" AUTOINCREMENT)
+      PRIMARY KEY("task_id" AUTOINCREMENT),
+      FOREIGN KEY (user_id) REFERENCES USER_user (user_id) ON UPDATE CASCADE,
+      FOREIGN KEY (created_by) REFERENCES USER_user (user_id) ON UPDATE CASCADE
     );""");
-    int index = await addRecords();
+    // int index = await addRecords();
 
-    debugPrint("TASK_task addRecords Done --> $index");
+    // debugPrint("TASK_task addRecords Done --> $index");
   }
 
   Future<int> addRecords() async {
@@ -34,18 +36,18 @@ class Task {
       // Generate the SQL query dynamically
       String query =
           """INSERT INTO $tableName (task_id, area, section, user_id, date, description, is_completed, created_by, updated_at, is_synced) VALUES 
-        (1, 'Area 01', 'Section 01', 6, '2025-07-06 08:15:00', 'Weed the crops manually and ensure the pathways between beds are clear.', 1, 4, '2025-07-05 08:20:00', 0),
-        (2, 'Area 05', 'Section 02', 6, '2025-07-06 10:45:00', 'Inspect the irrigation valves and clear any blockages in the main lines.', 0, 4, '2025-07-05 10:50:00', 1),
-        (3, 'Area 02', 'Section 03', 7, '2025-07-06 10:45:00', 'Ensure sprinkler heads are functioning and positioned correctly.', 0, 4, '2025-07-05 10:50:00', 1),
-        (4, 'Area 02', 'Section 04', 6, '2025-07-06 10:45:00', 'Flush the irrigation lines and test water pressure across all sections.', 0, 4, '2025-07-05 10:50:00', 1),
-        (5, 'Area 02', 'Section 03', 6, '2025-07-05 09:00:00', 'Inspect plants for pest damage and apply organic treatment if needed.', 1, 4, '2025-07-04 09:05:00', 1),
-        (6, 'Area 01', 'Section 07', 7, '2025-07-05 13:30:00', 'Harvest mature vegetables and sort them into clean baskets.', 1, 4, '2025-07-03 13:35:00', 1),
-        (7, 'Area 05', 'Section 09', 7, '2025-07-04 07:50:00', 'Prepare the soil for planting by removing rocks and leveling the surface.', 1, 4, '2025-07-03 08:00:00', 1),
-        (8, 'Area 05', 'Section 11', 6, '2025-07-07 08:00:00', 'Plant seedlings in straight rows and water them immediately after.', 0, 4, '2025-07-05 08:05:00', 1),
-        (9, 'Area 02', 'Section 02', 7, '2025-07-08 14:10:00', 'Apply compost evenly across all beds in preparation for planting.', 0, 4, '2025-07-06 14:15:00', 0),
-        (10, 'Area 03', 'Section 04', 6, '2025-07-09 15:20:00', 'Label newly planted sections with tags showing date and crop type.', 0, 4, '2025-07-06 15:25:00', 0),
-        (11, 'Area 04', 'Section 06', 7, '2025-07-03 11:40:00', 'Sweep and clean the storage area, then restock fertilizer bags.', 1, 4, '2025-07-02 11:45:00', 1),
-        (12, 'Area 04', 'Section 08', 7, '2025-07-10 16:00:00', 'Collect and log temperature and humidity readings from sensors.', 0, 4, '2025-07-06 16:05:00', 0);""";
+        (1, 'Area 01', 'Section 01', 6, '2025-07-16 08:15:00', 'Weed the crops manually and ensure the pathways between beds are clear.', 1, 4, '2025-07-05 08:20:00', 0),
+        (2, 'Area 05', 'Section 02', 6, '2025-07-16 10:45:00', 'Inspect the irrigation valves and clear any blockages in the main lines.', 0, 4, '2025-07-05 10:50:00', 1),
+        (3, 'Area 02', 'Section 03', 7, '2025-07-16 10:45:00', 'Ensure sprinkler heads are functioning and positioned correctly.', 0, 4, '2025-07-05 10:50:00', 1),
+        (4, 'Area 02', 'Section 04', 6, '2025-07-16 10:45:00', 'Flush the irrigation lines and test water pressure across all sections.', 0, 4, '2025-07-05 10:50:00', 1),
+        (5, 'Area 02', 'Section 03', 6, '2025-07-14 09:00:00', 'Inspect plants for pest damage and apply organic treatment if needed.', 1, 4, '2025-07-04 09:05:00', 1),
+        (6, 'Area 01', 'Section 07', 7, '2025-07-14 13:30:00', 'Harvest mature vegetables and sort them into clean baskets.', 1, 4, '2025-07-03 13:35:00', 1),
+        (7, 'Area 05', 'Section 09', 7, '2025-07-13 07:50:00', 'Prepare the soil for planting by removing rocks and leveling the surface.', 1, 4, '2025-07-03 08:00:00', 1),
+        (8, 'Area 05', 'Section 11', 6, '2025-07-17 08:00:00', 'Plant seedlings in straight rows and water them immediately after.', 0, 4, '2025-07-05 08:05:00', 1),
+        (9, 'Area 02', 'Section 02', 7, '2025-07-17 14:10:00', 'Apply compost evenly across all beds in preparation for planting.', 0, 4, '2025-07-06 14:15:00', 0),
+        (10, 'Area 03', 'Section 04', 6, '2025-07-18 15:20:00', 'Label newly planted sections with tags showing date and crop type.', 0, 4, '2025-07-06 15:25:00', 0),
+        (11, 'Area 04', 'Section 06', 7, '2025-07-13 11:40:00', 'Sweep and clean the storage area, then restock fertilizer bags.', 1, 4, '2025-07-02 11:45:00', 1),
+        (12, 'Area 04', 'Section 08', 7, '2025-07-20 16:00:00', 'Collect and log temperature and humidity readings from sensors.', 0, 4, '2025-07-06 16:05:00', 0);""";
 
       debugPrint("USER_user addRecords Done");
       return await database.rawInsert(query);

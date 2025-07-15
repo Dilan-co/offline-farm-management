@@ -32,9 +32,9 @@ class User {
       "is_synced" INTEGER NOT NULL DEFAULT 1, -- Synced to backend. YES 1, NO 0,
       PRIMARY KEY("user_id" AUTOINCREMENT)
     );""");
-    int index = await addRecords();
+    // int index = await addRecords();
 
-    debugPrint("USER_user addRecords Done --> $index");
+    // debugPrint("USER_user addRecords Done --> $index");
   }
 
   Future<int> addRecords() async {

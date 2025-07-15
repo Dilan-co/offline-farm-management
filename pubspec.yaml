@@ -14,6 +14,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
 
+  #Packages
   #sqflite
   sqflite: ^2.3.0
   #GetX
@@ -21,7 +22,6 @@ dependencies:
   get_storage: ^2.1.1
   #native splash screen
   flutter_native_splash: ^2.4.2
-  #Packages
   http: ^1.2.2
   intl: ^0.20.1
   path: ^1.8.0

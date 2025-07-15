@@ -1,5 +1,6 @@
 import 'package:farm_management/configs/color.dart';
 import 'package:farm_management/database/tables/task/task.dart';
+import 'package:farm_management/lists/dropdown_list.dart';
 import 'package:farm_management/models/table_models/task/task_model.dart';
 import 'package:farm_management/screens/task_view_and_completion.dart';
 import 'package:farm_management/widgets/simple_forms_tile_view_card.dart';
@@ -48,11 +49,8 @@ class _DashboardState extends State<Dashboard> {
 
   @override
   Widget build(BuildContext context) {
-    //-------- Uncomment After Implementing API --------
     //Generating Dropdown Lists
-    // DropdownList().generateDropdownLists();
-
-    //--------------------------------------------------
+    DropdownList().generateDropdownLists();
 
     //PopScope "false" to disable back button
     return PopScope(

@@ -298,13 +298,7 @@ class _TaskViewAndCompletionState extends State<TaskViewAndCompletion> {
                                                   ),
                                                 ),
                                                 onPressed: () {
-                                                  //-------- Remove After Implementing DB call --------
-                                                  setState(() {
-                                                    task.isCompleted = 1;
-                                                  });
-                                                  //--------------------------------------------------
-
-                                                  //Mark the task as completed
+                                                  //Mark the task as completed and update record
                                                   onComplete(taskData: task);
                                                   Get.back();
                                                 },
